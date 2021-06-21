@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author f0rb on 2021-06-21
  */
-public class RoleControllerTest {
+public class RoleControllerTest{
 
     @Test
     void createController() {
