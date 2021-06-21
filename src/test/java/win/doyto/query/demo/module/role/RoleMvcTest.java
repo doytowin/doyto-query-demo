@@ -32,4 +32,21 @@ public class RoleMvcTest extends DoytoQueryDemoApplicationTests {
                 .andExpect(jsonPath("code").value(0))
                 .andExpect(jsonPath("$.data.list.size()").value(5));
     }
+
+    @Test
+    void should_query_the_role_list_by_role_name_like() throws Exception {
+        mockMvc.perform(
+                get("/role?roleNameLike=vip")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        )
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(
+                        header().stringValues(
+                                "Content-Type", MediaType.APPLICATION_JSON_VALUE
+                        )
+                )
+                .andExpect(jsonPath("code").value(0))
+                .andExpect(jsonPath("$.data.list.size()").value(3));
+    }
 }
