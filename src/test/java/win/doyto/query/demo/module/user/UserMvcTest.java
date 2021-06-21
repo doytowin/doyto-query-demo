@@ -1,6 +1,5 @@
 package win.doyto.query.demo.module.user;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import win.doyto.query.demo.DoytoQueryDemoApplicationTests;
@@ -13,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Simon
  * @date 2021/6/21 20:35
  */
-public class UserMvcTest extends DoytoQueryDemoApplicationTests {
+class UserMvcTest extends DoytoQueryDemoApplicationTests {
 
     @Test
     void should_query_the_user_list() throws Exception {
