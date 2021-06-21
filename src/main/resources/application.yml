@@ -1,0 +1,5 @@
+doyto:
+  query:
+    config:
+      dialect: win.doyto.query.dialect.HSQLDBDialect
+      map-camel-case-to-underscore: true
