@@ -1,9 +1,7 @@
 package win.doyto.query.demo.module.role;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import win.doyto.query.demo.DoytoQueryDemoApplicationTests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Simon
  * @date 2021/6/21 20:35
  */
-public class RoleMvcTest extends DoytoQueryDemoApplicationTests {
+class RoleMvcTest extends DoytoQueryDemoApplicationTests {
 
     @Test
     void should_query_the_role_list() throws Exception {
