@@ -2,7 +2,7 @@ package win.doyto.query.demo.module.user;
 
 import lombok.Getter;
 import lombok.Setter;
-import win.doyto.query.entity.IntegerId;
+import win.doyto.query.entity.AbstractPersistable;
 
 import javax.persistence.Table;
 
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "t_user")
 @Getter
 @Setter
-public class UserEntity extends IntegerId {
+public class UserEntity extends AbstractPersistable<Integer> {
     private String username;
     private String password;
     private String nickname;
