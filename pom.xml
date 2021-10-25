@@ -17,6 +17,13 @@
 		<java.version>11</java.version>
         <sonar.organization>f0rb-github</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <docker.image.prefix>ghcr.io/doytowin</docker.image.prefix>
+        <docker.image.base>openjdk:11.0.13-jre-slim-buster</docker.image.base>
+        <docker.image.push>true</docker.image.push>
+        <docker.expose>0</docker.expose>
+        <docker.plugin.version>1.2.2</docker.plugin.version>
+
+        <start-class>win.doyto.query.demo.DoytoQueryDemoApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -60,15 +67,31 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>springloaded</artifactId>
+                        <version>1.2.8.RELEASE</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -88,6 +111,54 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.activation</groupId>
+                        <artifactId>activation</artifactId>
+                        <version>1.1.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <pushImage>${docker.image.push}</pushImage>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <baseImage>${docker.image.base}</baseImage>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <exposes>
+                        <expose>${docker.expose}</expose>
+                    </exposes>
+                    <volumes>
+                        <volume>/tmp</volume>
+                    </volumes>
+                    <env>
+                        <JAVA_OPTS>""</JAVA_OPTS>
+                    </env>
+                    <entryPoint>
+                        ["bash", "-c", "java -Duser.timezone=GMT+08 $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dlogging.file=/var/log/${project.artifactId}.log -jar /${project.build.finalName}.jar" ]
+                    </entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
 		</plugins>
 	</build>
