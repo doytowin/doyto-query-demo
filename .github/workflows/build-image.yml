@@ -1,10 +1,8 @@
 name: OCI Image
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - release
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -30,4 +28,4 @@ jobs:
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Build and Push image
-        run: mvn -DskipTests=true clean package
+        run: mvn -B -DskipTests=true clean verify
