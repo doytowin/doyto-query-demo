@@ -56,7 +56,7 @@ jobs:
     - name: Autobuild
       uses: github/codeql-action/autobuild@v1
       env:
-        JAVA_TOOL_OPTIONS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -DskipDocker
+        JAVA_TOOL_OPTIONS: -DskipDocker
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
