@@ -16,17 +16,9 @@ class UserMvcTest extends DoytoQueryDemoApplicationTests {
 
     @Test
     void should_query_the_user_list() throws Exception {
-        mockMvc.perform(
-                get("/user")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-        )
+        mockMvc.perform(get("/user"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(
-                        header().stringValues(
-                                "Content-Type", MediaType.APPLICATION_JSON_VALUE
-                        )
-                )
                 .andExpect(jsonPath("code").value(0))
                 .andExpect(jsonPath("$.data.list.size()").value(2))
                 .andExpect(jsonPath("$.data.list[0].username").value("admin-1"))
@@ -35,17 +27,9 @@ class UserMvcTest extends DoytoQueryDemoApplicationTests {
 
     @Test
     void should_query_the_user_list_by_user_name_like() throws Exception {
-        mockMvc.perform(
-                get("/user?usernameLike=in-1")
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-        )
+        mockMvc.perform(get("/user?usernameLike=in-1"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(
-                        header().stringValues(
-                                "Content-Type", MediaType.APPLICATION_JSON_VALUE
-                        )
-                )
                 .andExpect(jsonPath("code").value(0))
                 .andExpect(jsonPath("$.data.list.size()").value(1));
     }
