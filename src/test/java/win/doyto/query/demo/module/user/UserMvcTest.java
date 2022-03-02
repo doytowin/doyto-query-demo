@@ -1,12 +1,12 @@
 package win.doyto.query.demo.module.user;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.http.MediaType;
 import win.doyto.query.demo.DoytoQueryDemoApplicationTests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * @author Simon
@@ -32,5 +32,17 @@ class UserMvcTest extends DoytoQueryDemoApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("code").value(0))
                 .andExpect(jsonPath("$.data.list.size()").value(1));
+    }
+
+    @Test
+    void demo_for_multiple_conditions_query() throws Exception {
+        mockMvc.perform(
+                       get("/user?account=admin-1&valid=true&permNameLike=list" +
+                                   "&mobileNotNull=true&sort=id,desc;create_time,asc" +
+                                   "&pageSize=10&pageNumber=5")
+               )
+               .andDo(print())
+               .andExpect(jsonPath("code").value(0))
+               .andExpect(jsonPath("$.data.total").value(1));
     }
 }
