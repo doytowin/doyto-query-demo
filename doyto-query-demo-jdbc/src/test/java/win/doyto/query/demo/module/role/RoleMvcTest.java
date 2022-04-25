@@ -1,12 +1,12 @@
 package win.doyto.query.demo.module.role;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.http.MediaType;
 import win.doyto.query.demo.DoytoQueryDemoApplicationTests;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * @author Simon
