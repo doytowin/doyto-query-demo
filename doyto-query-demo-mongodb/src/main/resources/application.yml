@@ -1,0 +1,8 @@
+doyto:
+  query:
+    config:
+      map-camel-case-to-underscore: true
+logging:
+  level:
+    org.springframework.web.servlet.mvc.method.annotation: trace
+    win.doyto.query.sql.SqlAndArgs: debug

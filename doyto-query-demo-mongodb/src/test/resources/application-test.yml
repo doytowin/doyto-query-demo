@@ -1,0 +1,19 @@
+logging:
+  level:
+    root: info
+    win.doyto.query.core: debug
+    org.mongodb.driver.protocol.command: debug
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  cache:
+    type: simple
+  mongodb:
+    embedded:
+      version: 5.0.5
