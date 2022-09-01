@@ -12,6 +12,7 @@
     <modules>
         <module>doyto-query-demo-jdbc</module>
         <module>doyto-query-demo-mongodb</module>
+        <module>nplusone</module>
     </modules>
 
     <groupId>win.doyto</groupId>
