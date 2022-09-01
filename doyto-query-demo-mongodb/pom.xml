@@ -30,18 +30,18 @@
         <dependency>
             <groupId>win.doyto</groupId>
             <artifactId>doyto-query-web</artifactId>
-            <version>1.0.0-ALPHA</version>
+            <version>${doyto-query.version}</version>
         </dependency>
         <dependency>
             <groupId>win.doyto</groupId>
             <artifactId>doyto-query-mongodb</artifactId>
-            <version>1.0.0-ALPHA</version>
+            <version>${doyto-query.version}</version>
         </dependency>
 
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <version>3.4.6</version>
+            <version>3.4.8</version>
             <scope>test</scope>
         </dependency>
         <dependency>

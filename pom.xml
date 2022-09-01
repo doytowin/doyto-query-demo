@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.6</version>
+        <version>2.7.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -32,6 +32,8 @@
         <docker.plugin.version>1.2.2</docker.plugin.version>
 
         <start-class>win.doyto.query.demo.DoytoQueryDemoApplication</start-class>
+
+        <doyto-query.version>1.0.0-SNAPSHOT</doyto-query.version>
     </properties>
 
     <build>

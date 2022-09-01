@@ -19,7 +19,9 @@ package win.doyto.query.demo.module.menu;
 import lombok.Getter;
 import lombok.Setter;
 import win.doyto.query.entity.AbstractPersistable;
-import win.doyto.query.entity.MongoEntity;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityType;
 
 /**
  * MenuEntity
@@ -28,7 +30,7 @@ import win.doyto.query.entity.MongoEntity;
  */
 @Setter
 @Getter
-@MongoEntity(database = "doyto", collection = "menu")
+@Entity(type = EntityType.MONGO_DB, database = "doyto", name = "t_menu")
 public class MenuEntity extends AbstractPersistable<Integer> {
     private String name;
 }

@@ -37,7 +37,7 @@ class UserMvcTest extends DoytoQueryDemoApplicationTests {
     @Test
     void demo_for_multiple_conditions_query() throws Exception {
         mockMvc.perform(
-                       get("/user?account=admin-1&valid=true&permNameLike=list" +
+                       get("/user?account=admin-1&valid=true&perm.permNameLike=list" +
                                    "&mobileNotNull=true&sort=id,desc;create_time,asc" +
                                    "&pageSize=10&pageNumber=5")
                )
