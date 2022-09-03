@@ -8,6 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 import win.doyto.query.demo.domain.bid.Bid;
 import win.doyto.query.demo.domain.bid.BidRepository;
+import win.doyto.query.demo.domain.category.Category;
 import win.doyto.query.demo.domain.item.Item;
 import win.doyto.query.demo.domain.item.ItemRepository;
 
@@ -122,5 +123,19 @@ class NPlusOneTest {
         }
     }
 
+    @Test
+    void testSubSelectSolutionForManyToMany() {
+        List<Item> items = itemRepository.findAll();
+        System.out.println("Size of items:" + items.size());
+
+        System.out.println("Should have " + items.size() + " SELECT statements below.");
+        for (Item item : items) {
+            for (Category category : item.getCategories()) {
+                assertNotNull(category.getName());
+                //System.out.println(bid.getId());
+            }
+        }
+
+    }
 
 }
