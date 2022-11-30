@@ -21,7 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import win.doyto.query.core.PageQuery;
+import win.doyto.query.core.NestedQuery;
 
 /**
  * SizeQuery
@@ -33,6 +33,6 @@ import win.doyto.query.core.PageQuery;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SizeQuery extends PageQuery {
+public class SizeQuery implements NestedQuery {
     private Double hGt;
 }
