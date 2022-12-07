@@ -16,12 +16,10 @@
 
 package win.doyto.query.demo.domain.inventory;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bson.types.ObjectId;
-import win.doyto.query.mongodb.entity.MongoPersistable;
+
+import java.io.Serializable;
 
 /**
  * SizeEntity
@@ -30,9 +28,7 @@ import win.doyto.query.mongodb.entity.MongoPersistable;
  */
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class InventorySize extends MongoPersistable<ObjectId> {
+public class InventorySize implements Serializable {
     private Double h;
     private Double w;
     private String uom;

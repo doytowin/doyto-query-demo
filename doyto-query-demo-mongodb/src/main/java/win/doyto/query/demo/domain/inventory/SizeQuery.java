@@ -16,11 +16,8 @@
 
 package win.doyto.query.demo.domain.inventory;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 import win.doyto.query.core.NestedQuery;
 
 /**
@@ -30,9 +27,11 @@ import win.doyto.query.core.NestedQuery;
  */
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SizeQuery implements NestedQuery {
-    private Double hGt;
+    @JsonProperty("hLt")
+    private Double hLt;
+    private String uom;
 }

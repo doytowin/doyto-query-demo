@@ -30,7 +30,7 @@ import javax.persistence.EntityType;
  */
 @Getter
 @Setter
-@Entity(type = EntityType.MONGO_DB, database = "doyto", name = "t_inventory")
+@Entity(type = EntityType.MONGO_DB, database = "doyto", name = "c_inventory")
 public class InventoryEntity extends MongoPersistable<String> {
     private String item;
     private Integer qty;
